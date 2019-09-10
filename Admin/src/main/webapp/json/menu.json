@@ -108,6 +108,16 @@
 				"name": "book",
 				"icon": "",
 				"url": "./pages/book/index.jsp"
+			},{
+				"id": 20,
+				"name": "用户职位",
+				"icon": "",
+				"url": "./pages/position/index.jsp"
+			},{
+				"id": 21,
+				"name": "用户",
+				"icon": "",
+				"url": "./pages/user/index.jsp"
 			}]
 		}
 	]

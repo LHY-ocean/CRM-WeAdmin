@@ -38,11 +38,11 @@ public class BasicServiceImpl<T> implements BasicService<T>   {
 		boolean canpage = page != null;
 		ReturnInfo info = new ReturnInfo();
 		String limit = ReturnInfo.getLimit(page,max);
-		Object o = execDao("select",where, limit);
+		Object o = execDao("getWhere",where, limit);
 		if(o!=null)
 			info.setList((List) o);
 		if (canpage) {
-			Object obj = execDao("search",where);
+			Object obj = execDao("getSize",where);
 			if(obj!=null)
 				info.setCount((Integer)obj);
 		}
@@ -50,7 +50,7 @@ public class BasicServiceImpl<T> implements BasicService<T>   {
 	}
 	
 	public T selectById(Integer id) {
-		Object o = execDao("selectById", "");
+		Object o = execDao("selectById", id);
 		if(o!=null)
 			return (T)o;
 		else
@@ -80,6 +80,8 @@ public class BasicServiceImpl<T> implements BasicService<T>   {
 		else
 			return null;
 	}
+
+	
 
 
 	

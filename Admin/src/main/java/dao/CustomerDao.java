@@ -15,15 +15,15 @@ import model.Customer;
 public interface CustomerDao {
 	
 	@Select("select count(1) from customer inner join product on customer.pro_id = product.id ${txt}")
-	public Integer search(@Param(value = "txt") String where);
+	public Integer getSize(@Param(value = "txt") String where);
 	
 	@Select("select customer.*,product.pro_no pro_no from customer inner join product on customer.pro_id = product.id ${txt} order by id ${limit}")
-	public List<Customer> select(@Param(value = "txt") String where, @Param(value = "limit") String limit);
+	public List<Customer> getWhere(@Param(value = "txt") String where, @Param(value = "limit") String limit);
 	
-	@Select("select customer.*,product.pro_no pro_no from customer inner join product on customer.pro_id = product.id ${txt} order by id ${limit}")
-	public Customer selectById(@Param(value = "txt") String where, @Param(value = "limit") String limit);
+	@Select("select customer.*,product.pro_no pro_no from customer inner join product on customer.pro_id = product.id where customer.id = ${id}")
+	public Customer selectById(@Param("id")Integer id);
 	
-	@Delete("delete from customer where id=#{id}")
+	@Delete("delete from customer where id=${id}")
 	public Integer delete(@Param(value = "id")Integer id);
 	
 	@Insert("insert into customer(cus_no,cus_name,cus_sex,pro_id) values(#{cus_no},#{cus_name},#{cus_sex},#{pro_id})")

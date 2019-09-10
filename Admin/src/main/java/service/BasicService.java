@@ -1,5 +1,6 @@
 package service;
 
+
 import utils.ReturnInfo;
 
 public interface BasicService<T> {

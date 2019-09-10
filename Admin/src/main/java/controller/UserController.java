@@ -7,36 +7,37 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.Customer;
-import model.Product;
-import service.CustomerService;
-import service.ProductService;
+import model.Position;
+import model.User;
+import service.PositionService;
+import service.UserService;
 import utils.ReturnInfo;
 
 @Controller
-public class CustomerController extends BasicController<Customer> {
+@RequestMapping("user")
+public class UserController extends BasicController<User> {
 	
 	@Autowired
-	CustomerService service;
+	UserService service;
 	
 	@Autowired
-	ProductService proServiec;
+	PositionService pservice;
 	
 	@Override
 	public ReturnInfo index(String txt, Integer page, Integer limit) {
 		String where="";
 		if(txt!=null&&txt!="")
-			where=" where cus_name like '%"+txt+"%'";
+			where=" where username like '%"+txt+"%'";
 		return super.index(where, page, limit);
 	}
 	
-	@RequestMapping("getCus_sex")
-	public @ResponseBody String[] getCus_sex() {
-		return Customer.cus_sexname;
+	@RequestMapping("getUsersex")
+	public @ResponseBody String[] getUsersex() {
+		return User.usersexs;
 	}
 	
-	@RequestMapping("getProduct")
-	public @ResponseBody List<Product> getProduct() {
-		return proServiec.selectAll();
+	@RequestMapping("getPosition")
+	public @ResponseBody List<Position> getPosition() {
+		return pservice.selectAll();
 	}
 }

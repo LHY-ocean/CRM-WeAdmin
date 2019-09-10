@@ -326,9 +326,9 @@ body {
 .left-nav #nav li {
   border-bottom: 1px solid #e5e5e5;
 }
-.left-nav #nav li:hover > a {
-	color:white;
-  background-color: black;
+.left-nav #nav li> a:hover {
+  color:white;
+  background: black no-repeat;
 }
 .left-nav #nav li a {
   font-size: 14px;
@@ -343,7 +343,7 @@ body {
   display: block;
 }
 .left-nav #nav li .opened:hover {
-  /*background: #fff 0 0 no-repeat;*/
+ /*  background: #000 0 0 no-repeat; */
 }
 .left-nav #nav li .sub-menu {
   display: none;
@@ -362,7 +362,7 @@ body {
 }
 .left-nav #nav li .sub-menu li a:hover {
   color:white;
-  background-color: black;
+  background: black no-repeat;
 }
 .left-nav #nav li .sub-menu li .sub-menu li a {
   padding-left: 45px;

@@ -13,12 +13,4 @@ public class CustomerServiceImpl extends BasicServiceImpl<Customer> implements C
 	@Autowired
 	CustomerDao dao;
 
-	
-	@Override
-	public Customer selectById(Integer id) {
-		return dao.selectById(" where customer.id="+id, "limit 1");
-	}
-
-	
-
 }

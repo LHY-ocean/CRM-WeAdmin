@@ -24,9 +24,6 @@ public class BasicController<T> {
 	//首页查询显示
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo index(String txt, Integer page, Integer limit) {
-		String where="";
-		if(txt!=null&&txt!="")
-			where=" where cus_name like '%"+txt+"%'";
 		return basicService.select(txt,page,limit);
 	}
 	

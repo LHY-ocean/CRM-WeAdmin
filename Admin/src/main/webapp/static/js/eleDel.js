@@ -40,7 +40,7 @@ layui.use(['laydate', 'jquery', 'admin'], function() {
 
 			} else {
 				$(obj).attr('title', '启用')
-				$(obj).find('i').html('&#xe601;');
+				$(obj).find('i').html('');
 
 				$(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
 				layer.msg('已启用!', {
