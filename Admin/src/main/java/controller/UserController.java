@@ -38,6 +38,6 @@ public class UserController extends BasicController<User> {
 	
 	@RequestMapping("getPosition")
 	public @ResponseBody List<Position> getPosition() {
-		return pservice.selectAll();
+		return pservice.getAll();
 	}
 }

@@ -21,7 +21,7 @@ public interface PositionDao {
 	public  List<Position> getWhere(@Param("where")String where, @Param(value = "limit") String limit);
 
 	@Select("select * from Crm_user_position")
-	public List<Position> select();
+	public List<Position> getAll();
 	
 	@Select("select Crm_user_position.* from Crm_user_position  where id=${id}")
 	public  Position selectById(@Param("id")Integer id);

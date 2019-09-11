@@ -6,6 +6,6 @@ import model.Position;
 
 public interface PositionService extends BasicService<Position> {
 
-	List<Position> selectAll();
+	List<Position> getAll();
 	
 }

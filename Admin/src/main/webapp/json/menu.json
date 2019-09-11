@@ -105,19 +105,24 @@
 			"url": "",
 			"children": [{
 				"id": 19,
-				"name": "book",
-				"icon": "",
-				"url": "./pages/book/index.jsp"
-			},{
-				"id": 20,
 				"name": "用户职位",
 				"icon": "",
 				"url": "./pages/position/index.jsp"
 			},{
-				"id": 21,
+				"id": 20,
 				"name": "用户",
 				"icon": "",
 				"url": "./pages/user/index.jsp"
+			},{
+				"id": 21,
+				"name": "客户等级",
+				"icon": "",
+				"url": "./pages/level/index.jsp"
+			},{
+				"id": 22,
+				"name": "客户信息",
+				"icon": "",
+				"url": "./pages/customer/index.jsp"
 			}]
 		}
 	]

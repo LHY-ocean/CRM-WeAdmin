@@ -23,7 +23,7 @@ public interface UserDao {
 	@Select("select Crm_user.* from  Crm_user ")
 	public  List<User> getAll();
 
-	@Select("select Crm_user.* ,Crm_user_position.posname posname from  Crm_user inner join Crm_user_position on Crm_user.posid = Crm_user_position.id  where Crm_user.id=${id}")
+	@Select("select Crm_user.*  from  Crm_user where Crm_user.id=${id}")
 	public  User selectById(@Param("id")Integer id);
 
 	@Delete("delete from Crm_user where id=${id}")

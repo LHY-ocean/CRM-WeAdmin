@@ -6,7 +6,10 @@ public class Customer {
 	private String cusname;
 	private Integer cuslevelid;
 	
-	
+	public String levelname;
+	public String getLevelname() {
+		return levelname;
+	}
 	
 	private String cuscredit;
 	private String cuspleased;
@@ -14,6 +17,11 @@ public class Customer {
 	private String cusaddress;
 	private String cusphone;
 	private Integer userid;
+	
+	private String username;
+	public String getUsername() {
+		return username;
+	}
 	public Integer getId() {
 		return id;
 	}

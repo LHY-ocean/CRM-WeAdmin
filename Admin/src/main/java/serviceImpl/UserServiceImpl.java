@@ -1,5 +1,7 @@
 package serviceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,10 @@ public class UserServiceImpl extends BasicServiceImpl<User> implements UserServi
 	
 	@Autowired
 	UserDao dao;
+
+	public List<User> getAll() {
+		return dao.getAll();
+	}
 	
 
 }
