@@ -4,13 +4,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.CustomerDao;
-import model.Customer;
 import service.BasicService;
-import service.CustomerService;
 import utils.ReturnInfo;
 
 @Service
@@ -80,10 +76,5 @@ public class BasicServiceImpl<T> implements BasicService<T>   {
 		else
 			return null;
 	}
-
-	
-
-
-	
 
 }

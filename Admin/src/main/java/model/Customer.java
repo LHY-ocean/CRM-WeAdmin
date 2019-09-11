@@ -2,53 +2,91 @@ package model;
 
 public class Customer {
 	
-	public static String[] cus_sexname = {"不限","男","女"};
+	private Integer id;
+	private String cusname;
+	private Integer cuslevelid;
 	
 	
-	public String getCus_sexname() {
-		return cus_sexname[cus_sex];
-	}
 	
-	private int id;
-	private String cus_no;
-	private String cus_name;
-	private int cus_sex;
-	private int pro_id;
-	private String pro_no;
-	
-	public int getId() {
+	private String cuscredit;
+	private String cuspleased;
+	private String cusarea;
+	private String cusaddress;
+	private String cusphone;
+	private Integer userid;
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getCus_no() {
-		return cus_no;
+
+	public String getCusname() {
+		return cusname;
 	}
-	public void setCus_no(String cus_no) {
-		this.cus_no = cus_no;
+
+	public void setCusname(String cusname) {
+		this.cusname = cusname;
 	}
-	public String getCus_name() {
-		return cus_name;
+
+	public Integer getCuslevelid() {
+		return cuslevelid;
 	}
-	public void setCus_name(String cus_name) {
-		this.cus_name = cus_name;
+
+	public void setCuslevelid(Integer cuslevelid) {
+		this.cuslevelid = cuslevelid;
 	}
-	public int getCus_sex() {
-		return cus_sex;
+
+	public String getCuscredit() {
+		return cuscredit;
 	}
-	public void setCus_sex(int cus_sex) {
-		this.cus_sex = cus_sex;
+
+	public void setCuscredit(String cuscredit) {
+		this.cuscredit = cuscredit;
 	}
-	public int getPro_id() {
-		return pro_id;
+
+	public String getCuspleased() {
+		return cuspleased;
 	}
-	public void setPro_id(int pro_id) {
-		this.pro_id = pro_id;
+
+	public void setCuspleased(String cuspleased) {
+		this.cuspleased = cuspleased;
 	}
-	public String getPro_no() {
-		return pro_no;
+
+	public String getCusarea() {
+		return cusarea;
 	}
+
+	public void setCusarea(String cusarea) {
+		this.cusarea = cusarea;
+	}
+
+	public String getCusaddress() {
+		return cusaddress;
+	}
+
+	public void setCusaddress(String cusaddress) {
+		this.cusaddress = cusaddress;
+	}
+
+	public String getCusphone() {
+		return cusphone;
+	}
+
+	public void setCusphone(String cusphone) {
+		this.cusphone = cusphone;
+	}
+
+	public Integer getUserid() {
+		return userid;
+	}
+
+	public void setUserid(Integer userid) {
+		this.userid = userid;
+	}
+
+
 	
 	
 }
