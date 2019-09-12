@@ -25,6 +25,9 @@ public interface UserDao {
 
 	@Select("select Crm_user.*  from  Crm_user where Crm_user.id=${id}")
 	public  User selectById(@Param("id")Integer id);
+	
+	@Select("select Crm_user.* from Crm_user where username=#{username} and userpwd=#{userpwd}")
+	public User selectUser(User u);
 
 	@Delete("delete from Crm_user where id=${id}")
 	public int delete(@Param("id")Integer id);
@@ -34,6 +37,8 @@ public interface UserDao {
 
 	@Update("update Crm_user set username=#{username},userpwd=#{userpwd},usersex=#{usersex},userphone=#{userphone},posid=#{posid} where id=#{id}")
 	public Integer update(User u);
+
+	
 
 
 }

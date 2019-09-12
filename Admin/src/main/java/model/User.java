@@ -2,6 +2,17 @@ package model;
 
 public class User {
 
+	
+		public User() {
+			// TODO Auto-generated constructor stub
+		}
+		
+		public User(String username, String userpwd) {
+			super();
+			this.username = username;
+			this.userpwd = userpwd;
+		}
+
 		public static String[] usersexs= {"男","女"};
 		public String getUsersexname() {
 			return usersexs[usersex];

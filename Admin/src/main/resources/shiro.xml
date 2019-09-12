@@ -11,15 +11,15 @@
     <bean id="shiroFilter"  class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="securityManager"  ref="securityManager"></property>
         <property name="loginUrl"  value="/login.html"></property>
-        <property name="successUrl"  value="/index"></property>
+        <property name="successUrl"  value="/index.html"></property>
         <!-- 用户访问未对其授权的资源时，所显示的连接 -->
         <property name="unauthorizedUrl"  value="/unauthorizedUrl"></property>
        
         <property name="filterChainDefinitions">
             <value>
-                /inlogin=anon
-                /test/**=roles[role1]
-                /index=authc
+                
+               /**/*.html = authc
+                /**/*.jsp = authc
             </value>
         </property>
     </bean>

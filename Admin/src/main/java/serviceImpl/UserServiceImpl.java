@@ -18,6 +18,10 @@ public class UserServiceImpl extends BasicServiceImpl<User> implements UserServi
 	public List<User> getAll() {
 		return dao.getAll();
 	}
+
+	public User selectUser(User user) {
+		return dao.selectUser(user);
+	}
 	
 
 }
