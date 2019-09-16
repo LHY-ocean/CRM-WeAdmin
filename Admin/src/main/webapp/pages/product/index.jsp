@@ -48,7 +48,7 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'position/index.action' //数据接口
+				url : 'product/index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
@@ -60,11 +60,19 @@
 					width : 80,
 					sort : true,
 					fixed : 'right'
-				}, {
-					field : 'posname',
-					title : '职位名称',
-					width : 280
-				}, {
+				},{
+					field : 'name',
+					title : '客户类型',
+					width : 180
+				},{
+					field : 'amount',
+					title : '金额',
+					width : 180
+				},{
+					field : 'info',
+					title : '描述',
+					width : 180
+				},{
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
@@ -92,14 +100,14 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){
-						$.post("position/delete.action", {id : data.id}, 
+						$.post("product/delete.action", {id : data.id}, 
 								function(json) {
 							reload('demo');
 							layer.close(layer.index);
 								}, "json");
 					});
 				}else{
-					openFrame('pages/position/edit.jsp?id='+data.id);
+					openFrame('pages/product/edit.jsp?id='+data.id);
 				}
 			});
 
@@ -108,7 +116,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-					openFrame("pages/position/edit.jsp");
+					openFrame("pages/product/edit.jsp");
 				}
 			});
 

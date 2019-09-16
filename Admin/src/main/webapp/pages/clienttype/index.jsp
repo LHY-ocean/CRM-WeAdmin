@@ -48,7 +48,7 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'customer/index.action' //数据接口
+				url : 'clienttype/index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
@@ -60,37 +60,9 @@
 					width : 80,
 					sort : true,
 					fixed : 'right'
-				}, {
-					field : 'cusname',
-					title : '客户名',
-					width : 280
-				}, {
-					field : 'levelname',
-					title : '客户等级',
-					width : 180
-				}, {
-					field : 'cuscredit',
-					title : '客户信誉度（%）',
-					width : 180
 				},{
-					field : 'cuspleased',
-					title : '客户满意度（%）',
-					width : 180
-				},{
-					field : 'cusarea',
-					title : '客户所在地',
-					width : 180
-				},{
-					field : 'cusaddress',
-					title : '客户详细地址',
-					width : 180
-				},{
-					field : 'cusphone',
-					title : '客户电话',
-					width : 180
-				},{
-					field : 'username',
-					title : '负责人',
+					field : 'name',
+					title : '客户类型',
 					width : 180
 				},{
 					fixed : 'right',
@@ -120,14 +92,14 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){
-						$.post("customer/delete.action", {id : data.id}, 
+						$.post("clienttype/delete.action", {id : data.id}, 
 								function(json) {
 							reload('demo');
 							layer.close(layer.index);
 								}, "json");
 					});
 				}else{
-					openFrame('pages/customer/edit.jsp?id='+data.id);
+					openFrame('pages/clienttype/edit.jsp?id='+data.id);
 				}
 			});
 
@@ -136,7 +108,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-					openFrame("pages/customer/edit.jsp");
+					openFrame("pages/clienttype/edit.jsp");
 				}
 			});
 

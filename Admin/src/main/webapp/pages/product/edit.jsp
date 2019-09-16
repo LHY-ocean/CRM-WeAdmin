@@ -20,19 +20,30 @@
 
 
 <c:if test="${param.id==null}">
-<form class="layui-form" lay-filter="myform" action="position/insert.action">
+<form class="layui-form" lay-filter="myform" action="product/insert.action">
 </c:if>
 <c:if test="${param.id!=null}">
-<form class="layui-form" lay-filter="myform" action="position/update.action">
+<form class="layui-form" lay-filter="myform" action="product/update.action">
 <input type="hidden" name="id" >
 </c:if>
   <div class="layui-form-item">
-    <label class="layui-form-label">职位名称</label>
+    <label class="layui-form-label">客户类型</label>
     <div class="layui-input-block">
-      <input type="text" name="posname"  autocomplete="off" placeholder="请输入编号" class="layui-input">
+      <input type="text" name="name"  autocomplete="off" placeholder="请输入客户类型" class="layui-input">
     </div>
   </div>
-  
+  <div class="layui-form-item">
+    <label class="layui-form-label">金额</label>
+    <div class="layui-input-block">
+      <input type="text" name="amount"  autocomplete="off" placeholder="请输入金额" class="layui-input">
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">描述</label>
+    <div class="layui-input-block">
+      <input type="text" name="info"  autocomplete="off" placeholder="请输入描述" class="layui-input">
+    </div>
+  </div>
    <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit="" lay-filter="demo1">保存</button>
@@ -54,15 +65,15 @@ layui.use(['form',], function(){
 });
 
 
-
 var id="${param.id}";
 function init(){
-	$.post("position/select.action",{id:id}, function(json) {
+	$.post("product/select.action",{id:id}, function(json) {
 		render('myform', json);
 	},"json");
 }
 if(id.length>0){
 	init();
+}else{
 }
 
 </script>

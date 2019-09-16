@@ -48,7 +48,7 @@
 			table.render({
 				elem : '#demo',
 				height : 462,
-				url : 'level/index.action' //数据接口
+				url : 'workgroup/index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
@@ -60,11 +60,11 @@
 					width : 80,
 					sort : true,
 					fixed : 'right'
-				}, {
-					field : 'levelname',
-					title : '等级名称',
-					width : 280
-				}, {
+				},{
+					field : 'name',
+					title : '工作组',
+					width : 180
+				},{
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
@@ -92,14 +92,14 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){
-						$.post("level/delete.action", {id : data.id}, 
+						$.post("workgroup/delete.action", {id : data.id}, 
 								function(json) {
 							reload('demo');
 							layer.close(layer.index);
 								}, "json");
 					});
 				}else{
-					openFrame('pages/level/edit.jsp?id='+data.id);
+					openFrame('pages/workgroup/edit.jsp?id='+data.id);
 				}
 			});
 
@@ -108,7 +108,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-					openFrame("pages/level/edit.jsp");
+					openFrame("pages/workgroup/edit.jsp");
 				}
 			});
 

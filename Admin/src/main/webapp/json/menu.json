@@ -105,24 +105,19 @@
 			"url": "",
 			"children": [{
 				"id": 19,
-				"name": "用户职位",
+				"name": "客户类型",
 				"icon": "",
-				"url": "./pages/position/index.jsp"
+				"url": "./pages/clienttype/index.jsp"
 			},{
 				"id": 20,
-				"name": "用户",
+				"name": "产品",
 				"icon": "",
-				"url": "./pages/user/index.jsp"
+				"url": "./pages/product/index.jsp"
 			},{
 				"id": 21,
-				"name": "客户等级",
+				"name": "工作组",
 				"icon": "",
-				"url": "./pages/level/index.jsp"
-			},{
-				"id": 22,
-				"name": "客户信息",
-				"icon": "",
-				"url": "./pages/customer/index.jsp"
+				"url": "./pages/workgroup/index.jsp"
 			}]
 		}
 	]
