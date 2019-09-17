@@ -21,9 +21,9 @@
         <div id="darkbannerwrap"></div>
         
         <form method="post" class="layui-form">
-            <input name="username" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
+            <input name="tel" placeholder="用户名"  type="text" lay-verify="required" class="layui-input" >
             <hr class="hr15">
-            <input name="userpwd" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
+            <input name="pass" lay-verify="required" placeholder="密码"  type="password" class="layui-input">
             <hr class="hr15">
             <input class="loginin" value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
             <hr class="hr20" >
@@ -41,25 +41,25 @@
               
               //监听提交
               form.on('submit(login)', function(data){
-            	  location.href = "./index.html";
-//                   $.ajax({
-//                       url:"user/login.action",
-//                       type:"POST",
-//                       dataType: "json",
-//                       data:data.field,
-//                       success: function(json){
-//                         if(json!=null)
-//                         	layer.msg("登录成功",function(){
-//                         		location.href = "./index.html";
-//                         	})
-//                       },
-//                   	  error: function(json){
-//                   		layer.msg("用户名或密码不正确",function(){
-//                     		location.href = "./login.html";
-//                     	})
-//                   	  }
-//                   })
-//                   return false;
+       
+                  $.ajax({
+                      url:"operator/login.action",
+                      type:"POST",
+                      dataType: "json",
+                      data:data.field,
+                      success: function(json){
+                        if(json!=null)
+                        	layer.msg("登录成功",function(){
+                        		location.href = "./index.html";
+                        	})
+                      },
+                  	  error: function(json){
+                  		layer.msg("用户名或密码不正确",function(){
+                    		location.href = "./login.html";
+                    	})
+                  	  }
+                  })
+                  return false;
         
               });
                

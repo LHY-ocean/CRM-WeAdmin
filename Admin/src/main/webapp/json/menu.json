@@ -118,6 +118,21 @@
 				"name": "工作组",
 				"icon": "",
 				"url": "./pages/workgroup/index.jsp"
+			},{
+				"id": 22,
+				"name": "操作员",
+				"icon": "",
+				"url": "./pages/operator/index.jsp"
+			},{
+				"id": 23,
+				"name": "客户",
+				"icon": "",
+				"url": "./pages/client/index.jsp"
+			},{
+				"id": 24,
+				"name": "客户来源",
+				"icon": "",
+				"url": "./pages/src/index.jsp"
 			}]
 		}
 	]

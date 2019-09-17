@@ -18,8 +18,8 @@
         <property name="filterChainDefinitions">
             <value>
                 
-<!--                /**/*.html = authc -->
-<!--                 /**/*.jsp = authc -->
+               /**/*.html = authc
+                /**/*.jsp = authc
             </value>
         </property>
     </bean>

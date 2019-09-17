@@ -5,42 +5,42 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import model.Product;
-import service.ProductService;
+import model.Src;
+import service.SrcService;
 import utils.ReturnInfo;
 
 @Controller
-@RequestMapping("product")
-public class ProductController {
+@RequestMapping("src")
+public class SrcController {
 	
 	@Autowired
-	ProductService pservice;
+	SrcService srcservice;
 	
 	@RequestMapping("index")
 	public @ResponseBody ReturnInfo index(String txt,Integer page, Integer limit) {
 		String where="";
 		if(txt!=null && txt!="")
 			where = " where name like '%"+txt+"%'";
-		return pservice.getWhere(where, page, limit);
+		return srcservice.getWhere(where, page, limit);
 	}
 	
 	@RequestMapping("select")
-	public @ResponseBody Product getById(int id) {
-		return pservice.getById(id);
+	public @ResponseBody Src getById(int id) {
+		return srcservice.getById(id);
 	}
 	
 	@RequestMapping("insert")
-	public @ResponseBody Integer insert(Product c) {
-		return pservice.insert(c);
+	public @ResponseBody Integer insert(Src s) {
+		return srcservice.insert(s);
 	}
 	
 	@RequestMapping("delete")
 	public @ResponseBody int delete(int id) {
-		return pservice.delete(id);
+		return srcservice.delete(id);
 	}
 	
 	@RequestMapping("update")
-	public @ResponseBody Integer update(Product c) {
-		return pservice.update(c);
+	public @ResponseBody Integer update(Src s) {
+		return srcservice.update(s);
 	}
 }
