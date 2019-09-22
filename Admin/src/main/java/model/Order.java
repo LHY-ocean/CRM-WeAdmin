@@ -3,6 +3,9 @@ package model;
 public class Order {
 	
 	public static String[] statusname = {"未审核","已审核","暂缓业绩","作废"};
+	public String getStatusname() {
+		return statusname[status];
+	}
 	
 	private Integer id;
 	

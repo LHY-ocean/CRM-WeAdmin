@@ -9,6 +9,7 @@
 <script type="text/javascript" src="lib/layui/layui.all.js"></script>
 <script type="text/javascript" src="static/js/my.js"></script>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
+<script src="static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
 <title></title>
 <style type="text/css">
 .input {
@@ -99,7 +100,8 @@
 								}, "json");
 					});
 				}else{
-					openFrame('pages/src/edit.jsp?id='+data.id);
+// 					openFrame('pages/src/edit.jsp?id='+data.id);
+					WeAdminShow('编辑','pages/src/edit.jsp?id='+data.id);
 				}
 			});
 

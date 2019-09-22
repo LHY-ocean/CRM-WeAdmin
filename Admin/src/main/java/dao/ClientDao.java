@@ -18,13 +18,13 @@ public interface ClientDao {
 	@Select("select count(1) from  C_client   ${where}")
 	public int getSize(@Param("where")String where);
 
-	@Select("select c_client.*, c_clienttype.`name` clienttypename, c_src.`name` srcname,c_operator.`name` operatorname FROM c_client INNER JOIN c_clienttype ON c_client.clienttypeid = c_clienttype.id INNER JOIN c_src ON c_client.srcid = c_src.id INNER JOIN c_operator ON c_client.createoperatorid = c_operator.id   ${where}  ${limit}")
+	@Select("select c_client.*, c_clienttype.`name` clienttypename, c_src.`name` srcname,c_operator.`name` operatorname FROM c_client  INNER JOIN c_clienttype 	ON c_client.clienttypeid = c_clienttype.id  INNER JOIN c_src 	ON c_client.srcid = c_src.id  INNER JOIN c_operator 	ON c_client.createoperatorid = c_operator.id    ${where}  ${limit}")
 	public  List<Client> getWhere(@Param("where")String where, @Param(value = "limit") String limit);
 
 	@Select("select C_client.* from  C_client ")
 	public  List<Client> getAll();
 
-	@Select("select C_client.* from C_client  where id=#{id}")
+	@Select("select C_client.*,GROUP_CONCAT(o.name)as operatornames  from C_client LEFT JOIN c_operator o	ON FIND_IN_SET(o.id , c_client.operatorids)  where C_client.id=#{id} GROUP BY c_client.id")
 	public  Client getById(int id);
 
 	@Delete("delete from C_client where id=#{id}")

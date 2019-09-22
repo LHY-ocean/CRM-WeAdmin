@@ -9,8 +9,6 @@
 <script type="text/javascript" src="lib/layui/layui.all.js"></script>
 <script type="text/javascript" src="static/js/my.js"></script>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script src="lib/layui/layui.js" charset="utf-8"></script>
-<script src="static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
 <title></title>
 <style type="text/css">
 .input {
@@ -49,8 +47,8 @@
 			//第一个实例
 			table.render({
 				elem : '#demo',
-				height : 575,
-				url : 'client/index.action' //数据接口
+				height : 462,
+				url : 'order/index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
@@ -63,77 +61,57 @@
 					sort : true,
 					fixed : 'right'
 				}, {
-					field : 'name',
-					title : '姓名',
-					width : 100
+					field : 'clientname',
+					title : '客户姓名',
+					width : 280
 				}, {
-					field : 'sexname',
-					title : '性别',
-					width : 80
+					field : 'creatdate',
+					title : '创建时间',
+					width : 180
 				}, {
-					field : 'tel',
-					title : '电话号码',
-					width : 120
-				}, {
-					field : 'qq',
-					title : 'QQ',
-					width : 120
-				},{
-					field : 'email',
-					title : '邮箱',
+					field : 'compdate',
+					title : '业绩日期',
 					width : 180
 				},{
-					field : 'infos',
-					title : '额外信息',
-					width : 100
+					field : 'orderdate',
+					title : '合同日期',
+					width : 180
 				},{
-					field : 'linkstatusname',
-					title : '联通状态',
-					width : 100
+					field : 'startdate',
+					title : '开始日期',
+					width : 180
 				},{
-					field : 'clientstatusname',
-					title : '客户状态',
-					width : 100
-				},{
-					field : 'purposestatusname',
-					title : '意向状态',
-					width : 100
-				},{
-					field : 'assessstatusname',
-					title : '评估状态',
-					width : 100
-				},{
-					field : 'execstatusname',
-					title : '处理状态',
-					width : 100
-				},{
-					field : 'statusname',
-					title : '状态',
-					width : 100
-				},{
-					field : 'clienttypename',
-					title : '客户类型',
-					width : 100
-				},{
-					field : 'operatorids',
-					title : '负责人ID',
-					width : 100
+					field : 'enddate',
+					title : '结束日期',
+					width : 180
 				},{
 					field : 'operatorname',
 					title : '创建人',
-					width : 100
+					width : 180
 				},{
-					field : 'createdate',
-					title : '创建时间',
-					width : 120
+					field : 'info',
+					title : '合同条款',
+					width : 180
 				},{
-					field : 'srcname',
-					title : '机会来源',
-					width : 100
+					field : 'files',
+					title : '文件',
+					width : 180
 				},{
-					field : 'count',
-					title : '回访次数',
-					width : 100
+					field : 'compoperatorids',
+					title : '业绩人员',
+					width : 180
+				},{
+					field : 'compweight',
+					title : '业绩权重',
+					width : 180
+				},{
+					field : 'statusname',
+					title : '状态',
+					width : 180
+				},{
+					field : 'amount',
+					title : '总金额',
+					width : 180
 				},{
 					field : 'comments',
 					title : '备注',
@@ -166,15 +144,14 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){
-						$.post("client/delete.action", {id : data.id}, 
+						$.post("order/delete.action", {id : data.id}, 
 								function(json) {
 							reload('demo');
 							layer.close(layer.index);
 								}, "json");
 					});
 				}else{
-// 					openFrame('pages/client/edit.jsp?id='+data.id);
-					WeAdminShow('添加用户','pages/client/edit.jsp?id='+data.id,600,400)
+					openFrame('pages/order/edit.jsp?id='+data.id);
 				}
 			});
 
@@ -183,8 +160,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-// 					openFrame("pages/client/edit.jsp");
-					WeAdminShow('编辑用户','pages/client/edit.jsp')
+					openFrame("pages/order/edit.jsp");
 				}
 			});
 

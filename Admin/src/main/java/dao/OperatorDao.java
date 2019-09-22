@@ -17,7 +17,7 @@ public interface OperatorDao {
 	@Select("select count(*) from  C_operator   ${where}")
 	public int getSize(@Param("where") String where);
 
-	@Select("select C_operator.*, C_workgroup.name groupname from  C_operator inner join C_workgroup on C_operator.groupid = C_workgroup.id   ${where}  ${limit}")
+	@Select("select C_operator.*, C_workgroup.name groupname from  C_operator inner join C_workgroup on C_operator.groupid = C_workgroup.id   ${where} order by C_operator.id  ${limit}")
 	public List<Operator> getWhere(@Param("where") String where, @Param(value = "limit") String limit);
 
 	@Select("select C_operator.* from  C_operator ")

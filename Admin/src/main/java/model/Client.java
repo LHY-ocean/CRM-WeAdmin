@@ -58,6 +58,10 @@ public class Client {
 	}
 
 	private String operatorids;
+	private String operatornames;
+	public String getOperatornames() {
+		return operatornames;
+	}
 	
 	private Integer createoperatorid;
 	private String operatorname;

@@ -95,7 +95,6 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 	/*
 	 * @todo 左侧导航菜单的显示和隐藏
 	 */
-	// $('.container .left_open i').click(function(event) {
 	$('.container').on('click', '.left_open i', function(event) {
 		if($('.left-nav').css('left') == '0px') {
 			//此处左侧菜单是显示状态，点击隐藏
@@ -179,11 +178,9 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 			//console.log(li);
 			if(li > 0) {
 				//tab已经存在，直接切换到指定Tab项
-				//console.log(">0");
 				element.tabChange('wenav_tab', id); //切换到：用户管理
 			} else {
 				//该id不存在，新增一个Tab项
-				//console.log("<0");
 				element.tabAdd('wenav_tab', {
 					title: title,
 					content: '<iframe tab-id="' + id + '" frameborder="0" src="' + url + '" scrolling="yes" class="weIframe"></iframe>',
@@ -302,63 +299,30 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 	    h       弹出层高度（缺省调默认值）
 	*/
 	window.WeAdminShow = function(title, url, w, h) {
-		if(title == null || title == '') {
-			title = false;
-		};
-		if(url == null || url == '') {
-			url = "404.html";
-		};
-		if(w == null || w == '') {
-			w = ($(window).width() * 0.9);
-		};
-		if(h == null || h == '') {
-			h = ($(window).height() - 50);
-		};
 		layer.open({
 			type: 2,
-			area: [w + 'px', h + 'px'],
 			fix: false, //不固定
 			maxmin: true,
+			full:function(){
+				layer.closeAll('iframe');
+				layer.open({
+					type: 2,
+					area: ['100%','100%'],
+					shadeClose: true,
+					shade: 0.4,
+					title: title,
+					content: url
+				})
+			},
+			area: [w + 'px', h + 'px'],
 			shadeClose: true,
 			shade: 0.4,
 			title: title,
 			content: url
 		});
+		
 	}
-	/*弹出层+传递ID参数*/
-	window.WeAdminEdit = function(title, url, id, w, h) {
-		if(title == null || title == '') {
-			title = false;
-		};
-		if(url == null || url == '') {
-			url = "404.html";
-		};
-		if(w == null || w == '') {
-			w = ($(window).width() * 0.9);
-		};
-		if(h == null || h == '') {
-			h = ($(window).height() - 50);
-		};
-		layer.open({
-			type: 2,
-			area: [w + 'px', h + 'px'],
-			fix: false, //不固定
-			maxmin: true,
-			shadeClose: true,
-			shade: 0.4,
-			title: title,
-			content: url,
-			success: function(layero, index) {
-				//向iframe页的id=house的元素传值  // 参考 https://yq.aliyun.com/ziliao/133150
-				var body = layer.getChildFrame('body', index);
-				body.contents().find("#dataId").val(id);
-				console.log(id);
-			},
-			error: function(layero, index) {
-				alert("aaa");
-			}
-		});
-	}
+	
 
 	/**
 	 *@todo tab监听：点击tab项对应的关闭按钮事件
@@ -448,19 +412,6 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 		sessionStorage.setItem('menu', JSON.stringify(menu));
 	}
 	
-	/**
-	 * 模拟登录
-	 * localStorage模拟登录及退出
-	 */
-	var login = localStorage.getItem('login');
-	$('.loginout').click(function() {
-		login = 0;
-		localStorage.setItem('login', login);
-	});
-	$('.loginin').click(function() {
-		login = 1;
-		localStorage.setItem('login', login);
-	});
 	
 	/*
 	 *Tab加载后刷新
