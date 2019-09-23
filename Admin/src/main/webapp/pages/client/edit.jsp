@@ -203,6 +203,7 @@ var id="${param.id}";
 function init(){
 	$.post("client/select.action",{id:id}, function(json) {
 		render('myform', json);
+		$('[id=opids]').attr('ts-selected',json.operatornames);
 		getList("client/getClientType.action",{},"[name=clienttypeid]",json.clienttypeid);
 		getList("client/getOperator.action",{},"[name=createoperatorid]",json.createoperatorid);
 		getList("client/getSrc.action",{},"[name=srcid]",json.srcid);

@@ -39,6 +39,14 @@ public class ClientController {
 		return cservice.getWhere(where, page, limit);
 	}
 
+	@RequestMapping("no_index")
+	public @ResponseBody ReturnInfo no_index(String txt, Integer page, Integer limit) {
+		String where = " where C_client.count = 0 and C_client.operatorids = 0";
+		if (txt != null && txt != "")
+			where = " where C_client.count = 0 and C_client.operatorids = 0 and C_client.name like '%" + txt + "%'";
+		return cservice.getWhere(where, page, limit);
+	}
+	
 	@RequestMapping("select")
 	public @ResponseBody Client getById(int id) {
 		return cservice.getById(id);
