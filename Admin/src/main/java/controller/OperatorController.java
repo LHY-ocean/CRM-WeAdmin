@@ -29,7 +29,7 @@ public class OperatorController {
 	@RequestMapping("login")
 	public @ResponseBody String login(Operator o, String code) {
 		try {
-			// SecurityUtils.getSubject().getSession().setTimeout(5000);
+//			 SecurityUtils.getSubject().getSession().setTimeout(5000);
 			SecurityUtils.getSubject().login(new UsernamePasswordToken(o.getTel(), o.getPass()));
 		} catch (AccountException e) { 
 			return "";

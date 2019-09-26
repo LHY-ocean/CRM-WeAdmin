@@ -302,19 +302,9 @@ layui.define(['jquery', 'form', 'layer', 'element'], function(exports) {
 		layer.open({
 			type: 2,
 			fix: false, //不固定
+			area: ['100%','100%'],
 			maxmin: true,
-			full:function(){
-				layer.closeAll('iframe');
-				layer.open({
-					type: 2,
-					area: ['100%','100%'],
-					shadeClose: true,
-					shade: 0.4,
-					title: title,
-					content: url
-				})
-			},
-			area: [w + 'px', h + 'px'],
+			
 			shadeClose: true,
 			shade: 0.4,
 			title: title,

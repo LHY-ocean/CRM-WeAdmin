@@ -9,7 +9,6 @@
 <script type="text/javascript" src="lib/layui/layui.all.js"></script>
 <script type="text/javascript" src="static/js/my.js"></script>
 <script type="text/javascript" src="static/js/jquery.min.js"></script>
-<script src="lib/layui/layui.js" charset="utf-8"></script>
 <script src="static/js/eleDel.js" type="text/javascript" charset="utf-8"></script>
 <title></title>
 <style type="text/css">
@@ -50,103 +49,70 @@
 			table.render({
 				elem : '#demo',
 				height : 575,
-				url : 'client/index.action' //数据接口
+				url : 'revisit/history_index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
-				cols : [ [ //表头
-				{
-					field : 'id',
-					title : 'ID',
-					width : 80,
-					hide:true,
-					sort : true,
-				}, {
-					field : 'name',
-					title : '姓名',
-					width : 100
-				}, {
-					field : 'sexname',
-					title : '性别',
-					width : 80
-				}, {
-					field : 'tel',
-					title : '电话号码',
-					width : 120
-				}, {
-					field : 'qq',
-					title : 'QQ',
-					width : 120
-				},{
-					field : 'email',
-					title : '邮箱',
-					width : 180
-				},{
-					field : 'infos',
-					title : '额外信息',
-					width : 100
-				},{
-					field : 'linkstatusname',
-					title : '联通状态',
-					width : 100
-				},{
-					field : 'clientstatusname',
-					title : '客户状态',
-					width : 100
-				},{
-					field : 'purposestatusname',
-					title : '意向状态',
-					width : 100
-				},{
-					field : 'assessstatusname',
-					title : '评估状态',
-					width : 100
-				},{
-					field : 'execstatusname',
-					title : '处理状态',
-					width : 100
-				},{
-					field : 'statusname',
-					title : '状态',
-					width : 100
-				},{
-					field : 'clienttypename',
-					title : '客户类型',
-					width : 100
-				},{
-					field : 'operatorids',
-					title : '负责人ID',
-					width : 100
-				},{
-					field : 'operatorname',
-					title : '创建人',
-					width : 100
-				},{
-					field : 'createdate',
-					title : '创建时间',
-					width : 120
-				},{
-					field : 'srcname',
-					title : '机会来源',
-					width : 100
-				},{
-					field : 'count',
-					title : '回访次数',
-					width : 100
-				},{
-					field : 'comments',
-					title : '备注',
-					width : 180
-				},{
-					fixed : 'right',
-					title : '操作',
-					toolbar : '#barDemo',
-					width : 150,
-					align : 'center'
-				}
+				cols : [ [ 
+					{
+						field : 'id',
+						title : 'ID',
+						width : 80,
+						sort : true,
+					},{
+						field : 'clientname',
+						title : '客户名',
+						width : 100
+					},{
+						field : 'linkstatusname',
+						title : '连通状态',
+						width : 100
+					},{
+						field : 'clientstatusname',
+						title : '客户状态',
+						width : 100
+					},{
+						field : 'purposestatusname',
+						title : '意向状态',
+						width : 100
+					},{
+						field : 'assessstatusname',
+						title : '评估状态',
+						width : 100
+					},{
+						field : 'execstatusname',
+						title : '处理状态',
+						width : 100
+					},{
+						field : 'askinfo',
+						title : '询问状况',
+						width : 100
+					},{
+						field : 'followinfo',
+						title : '跟进措施',
+						width : 100
+					},{
+						field : 'probleminfo',
+						title : '客户顾虑',
+						width : 100
+					},{
+						field : 'statusname',
+						title : '状态',
+						width : 100
+					},{
+						field : 'comments',
+						title : '备注',
+						width : 100
+					},{
+						fixed : 'right',
+						title : '操作',
+						toolbar : '#barDemo',
+						width : 150,
+						align : 'center'
+					}
 
-				] ],
+					] ],
 				parseData : function(res) {
 					return {
 						"code" : res.code,
@@ -166,15 +132,14 @@
 				if (obj.event === 'del') { ///lay-event 属性
 					
 					myconfirm("刪除？",function(){
-						$.post("client/delete.action", {id : data.id}, 
+						$.post("revisit/delete.action", {id : data.id}, 
 								function(json) {
 							reload('demo');
 							layer.close(layer.index);
 								}, "json");
 					});
 				}else{
-// 					openFrame('pages/client/edit.jsp?id='+data.id);
-					WeAdminShow('添加用户','pages/client/edit.jsp?id='+data.id,600,400)
+					WeAdminShow('编辑','pages/revisit/edit.jsp?id='+data.id);
 				}
 			});
 
@@ -183,8 +148,7 @@
 					var txt = $(event.target).prev().find("input").val();
 					reload('demo',{txt : txt});
 				} else if(obj.event === 'add') {
-// 					openFrame("pages/client/edit.jsp");
-					WeAdminShow('编辑用户','pages/client/edit.jsp',600,400)
+					WeAdminShow('添加','pages/revisit/edit.jsp');
 				}
 			});
 

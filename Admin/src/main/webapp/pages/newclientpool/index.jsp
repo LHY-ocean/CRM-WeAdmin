@@ -28,8 +28,10 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+<a class="layui-btn layui-btn-xs" lay-event="revisit">添加回访</a>
+<a class="layui-btn layui-btn-xs" lay-event="lookrevisit">查看回访</a>
+<a class="layui-btn layui-btn-xs" lay-event="pea">转出</a>
+
 </script>
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
@@ -37,7 +39,8 @@
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
     <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
-    <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
+    <button class="layui-btn layui-btn-sm" lay-event="peach">批量转出</button>
+
   </div>
 </script>
 
@@ -50,12 +53,14 @@
 			table.render({
 				elem : '#demo',
 				height : 575,
-				url : 'client/index.action' //数据接口
+				id:'mytab',
+				url : 'client/new_index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
 				page : true //开启分页
 				,
 				cols : [ [ //表头
+				{type:'checkbox'},
 				{
 					field : 'id',
 					title : 'ID',
@@ -85,27 +90,33 @@
 				},{
 					field : 'infos',
 					title : '额外信息',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'linkstatusname',
 					title : '联通状态',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'clientstatusname',
 					title : '客户状态',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'purposestatusname',
 					title : '意向状态',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'assessstatusname',
 					title : '评估状态',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'execstatusname',
 					title : '处理状态',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'statusname',
 					title : '状态',
@@ -117,7 +128,8 @@
 				},{
 					field : 'operatorids',
 					title : '负责人ID',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'operatorname',
 					title : '创建人',
@@ -133,16 +145,18 @@
 				},{
 					field : 'count',
 					title : '回访次数',
-					width : 100
+					width : 100,
+					hide:true
 				},{
 					field : 'comments',
 					title : '备注',
-					width : 180
+					width : 180,
+					hide:true
 				},{
 					fixed : 'right',
 					title : '操作',
 					toolbar : '#barDemo',
-					width : 150,
+					width : 250,
 					align : 'center'
 				}
 
@@ -158,33 +172,37 @@
 			});
 			
 			
-
 			//obj 行      obj.data 行数据    data.id 列
 			//test  是table的lay-filter="test" 属性
 			table.on('tool(test)', function(obj) {
 				var data = obj.data;
-				if (obj.event === 'del') { ///lay-event 属性
-					
-					myconfirm("刪除？",function(){
-						$.post("client/delete.action", {id : data.id}, 
-								function(json) {
-							reload('demo');
-							layer.close(layer.index);
-								}, "json");
-					});
-				}else{
-// 					openFrame('pages/client/edit.jsp?id='+data.id);
-					WeAdminShow('添加用户','pages/client/edit.jsp?id='+data.id,600,400)
-				}
+				if (obj.event === 'revisit') { ///lay-event 属性
+					WeAdminShow('分配用户','pages/revisit/edit.jsp?clientid='+data.id,600,400);
+				} else if(obj.event == 'pea'){
+					var data = obj.data;
+					$.post("client/new_pea.action",{id:data.id},function(json){
+						fresh('mytab');
+					},"json");
+				} 
 			});
 
 			table.on('toolbar(test)', function(obj) {
 				if (obj.event === 'search') {
 					var txt = $(event.target).prev().find("input").val();
-					reload('demo',{txt : txt});
-				} else if(obj.event === 'add') {
-// 					openFrame("pages/client/edit.jsp");
-					WeAdminShow('编辑用户','pages/client/edit.jsp',600,400)
+					reload('mytab',{txt : txt});
+				} else if(obj.event == 'peach'){
+					var data = obj.data;
+						var checkStatus = table.checkStatus("mytab");
+						var str="";
+						for(var i=0;i<checkStatus.data.length;i++){
+							str+=checkStatus.data[i].id+",";
+						}
+						if(checkStatus.data.length>0){
+							str=","+str;
+						}
+					$.post("client/new_peach.action",{str:str},function(json){
+						fresh('mytab');
+					},"json");
 				}
 			});
 

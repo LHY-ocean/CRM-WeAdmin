@@ -57,6 +57,7 @@ public class UserRealm extends AuthorizingRealm
         {
             throw new  AccountException("username is not exist");
         }
+        SecurityUtils.getSubject().getSession().setAttribute("user", operator);
         return new  SimpleAuthenticationInfo(arg0, token.getPassword(), token.getUsername());
     }
 }

@@ -44,12 +44,12 @@ public class Client {
 	private String qq;
 	private String email;
 	private String infos;
-	private Integer linkstatus;
-	private Integer clientstatus;
-	private Integer purposestatus;
-	private Integer assessstatus;
-	private Integer execstatus;
-	private Integer status;
+	private Integer linkstatus=0;
+	private Integer clientstatus=0;
+	private Integer purposestatus=0;
+	private Integer assessstatus=0;
+	private Integer execstatus=0;
+	private Integer status=0;
 	private Integer clienttypeid;
 	
 	private String clienttypename;
@@ -77,7 +77,7 @@ public class Client {
 		return srcname;
 	}
 
-	private Integer count;
+	private Integer count=0;
 	private String comments;
 	public Integer getId() {
 		return id;
@@ -238,5 +238,19 @@ public class Client {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	
+	private Integer uploadstatus = 0; //0未上传，1成功，2失败
+	private String uploadstatusname;
+	public Integer getUploadstatus() {
+		return uploadstatus;
+	}
 
+	public void setUploadstatus(Integer uploadstatus) {
+		this.uploadstatus = uploadstatus;
+	}
+	
+	public String getUploadstatusname() {
+		return uploadstatus==0?"未上传":"成功";
+	}
+	
 }

@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>ocean</groupId>
   <artifactId>Admin</artifactId>
-  <packaging>war</packaging>
+  <packaging>war</packaging> 
   <version>0.0.1-SNAPSHOT</version>
   <name>Admin Maven Webapp</name>
   <url>http://maven.apache.org</url>
@@ -177,8 +177,24 @@
             <artifactId>shiro-core</artifactId>
             <version>1.4.0</version>
         </dependency>
+        <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>3.17</version>
+</dependency>
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi-ooxml</artifactId>
+    <version>3.17</version>
+</dependency>
+    <dependency>
+      <groupId>commons-fileupload</groupId>
+      <artifactId>commons-fileupload</artifactId>
+      <version>1.3.2</version>
+    </dependency>
+        
 </dependencies>
-  <build>
+  <build> 
     <finalName>Admin</finalName>
   </build>
 </project>

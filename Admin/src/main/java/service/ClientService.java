@@ -20,5 +20,9 @@ public interface ClientService {
 	public Integer insert(Client c);
 
 	public Integer update(Client c);
+
+	public Integer updateOpids(Client c);
+
+	public void updateCount(Client c);
 	
 }

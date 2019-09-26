@@ -2,15 +2,18 @@ package controller;
 
 import java.util.List;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import model.Client;
+import model.ClientType;
 import model.Operator;
 import model.Src;
 import service.ClientService;
+import service.ClientTypeService;
 import service.OperatorService;
 import service.SrcService;
 import utils.ReturnInfo;
@@ -28,6 +31,9 @@ public class ClientController {
 	@Autowired
 	SrcService srcservice;
 	
+	@Autowired
+	ClientTypeService ctservice;
+	
 
 
 
@@ -41,10 +47,39 @@ public class ClientController {
 
 	@RequestMapping("no_index")
 	public @ResponseBody ReturnInfo no_index(String txt, Integer page, Integer limit) {
-		String where = " where C_client.count = 0 and C_client.operatorids = 0";
+		String where = " where C_client.count = 0 and ( C_client.operatorids is null or C_client.operatorids = '' ) ";
 		if (txt != null && txt != "")
-			where = " where C_client.count = 0 and C_client.operatorids = 0 and C_client.name like '%" + txt + "%'";
+			where = " where C_client.count = 0 and  ( C_client.operatorids is null or C_client.operatorids = '' ) and C_client.name like '%" + txt + "%'";
 		return cservice.getWhere(where, page, limit);
+	}
+	
+	@RequestMapping("new_index")
+	public @ResponseBody ReturnInfo new_index(String txt, Integer page, Integer limit) {
+		Operator user = (Operator)SecurityUtils.getSubject().getSession().getAttribute("user");
+		int id = user.getId();
+		String where = " where C_client.count = 0 and C_client.operatorids like '%"+id+"%'";
+		if (txt != null && txt != "")
+			where = " where C_client.count = 0 and C_client.operatorids like '%"+id+"%' and C_client.name like '%" + txt + "%'";
+		return cservice.getWhere(where, page, limit);
+	}
+	
+	@RequestMapping("new_pea")
+	public @ResponseBody String new_pea(int id ,Client c) {
+			c.setId(id);
+			c.setOperatorids(null);
+			cservice.updateOpids(c); 
+		return   "{\"status\":1}";
+	}
+	
+	@RequestMapping("new_peach")
+	public @ResponseBody String new_peach(String str,Client c) {
+		String[] ids = str.split(",");
+		for(int i=1;i<ids.length;i++) {
+			c.setId(Integer.valueOf(ids[i]));
+			c.setOperatorids(null);
+			cservice.updateOpids(c); 
+		}
+		return   "{\"status\":1}";
 	}
 	
 	@RequestMapping("select")
@@ -67,9 +102,19 @@ public class ClientController {
 		return cservice.update(c);
 	}
 	
+	@RequestMapping("updateOpids")
+	public @ResponseBody String updateOpids(Client c,String str) {
+		String[] ids = str.split(",");
+		for(int i=1;i<ids.length;i++) {
+			c.setId(Integer.valueOf(ids[i]));
+			cservice.updateOpids(c); 
+		}
+		return   "{\"status\":1}";
+	}
+	
 	@RequestMapping("getClientType")
-	public @ResponseBody List<Client> getClientType() {
-		return cservice.getAll();
+	public @ResponseBody List<ClientType> getClientType() {
+		return ctservice.getAll();
 	}
 	
 	@RequestMapping("getOperator")
@@ -84,12 +129,12 @@ public class ClientController {
 	
 	@RequestMapping("getLink")
 	public @ResponseBody String[] getLink() {
-		return Client.statusname;
+		return Client.linkstatusname;
 	}
 	
 	@RequestMapping("getClient")
 	public @ResponseBody String[] getClient() {
-		return Client.linkstatusname;
+		return Client.clientstatusname;
 	}
 	
 	@RequestMapping("getPurpose")

@@ -5,16 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dao.ClientDao;
-import model.Client;
-import service.ClientService;
+import dao.RevisitDao;
+import model.Revisit;
+import service.RevisitService;
 import utils.ReturnInfo;
 
 @Service
-public class ClientServiceImpl implements ClientService {
+public class RevisitServiceImpl implements RevisitService {
 
 	@Autowired
-	ClientDao dao;
+	RevisitDao dao;
 	
 	public int getSize(String where) {
 		return dao.getSize(where);
@@ -30,11 +30,11 @@ public class ClientServiceImpl implements ClientService {
 		return info;
 	}
 
-	public List<Client> getAll() {
+	public List<Revisit> getAll() {
 		return dao.getAll();
 	}
 
-	public Client getById(int id) {
+	public Revisit getById(int id) {
 		return dao.getById(id);
 	}
 
@@ -42,20 +42,12 @@ public class ClientServiceImpl implements ClientService {
 		return dao.delete(id);
 	}
 
-	public Integer insert(Client c) {
-		return dao.insert(c);
+	public Integer insert(Revisit r) {
+		return dao.insert(r);
 	}
 
-	public Integer update(Client c) {
-		return dao.update(c);
-	}
-
-	public Integer updateOpids(Client c) {
-		return dao.updateOpids(c);
-	}
-
-	public void updateCount(Client c) {
-		dao.updateCount(c);
+	public Integer update(Revisit r) {
+		return dao.update(r);
 	}
 
 }

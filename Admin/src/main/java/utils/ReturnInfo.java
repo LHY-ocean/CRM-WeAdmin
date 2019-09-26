@@ -8,6 +8,14 @@ public class ReturnInfo {
 	private String msg="";
 	private List list;
 	
+	public ReturnInfo(List list) {
+		this.list = list;
+		this.count = list.size();
+	}
+	
+	public ReturnInfo() {
+	}
+	
 	public static String getLimit(Integer page,Integer max) {
 		if(page==null) return "";
 		return " limit "+((page-1)*max)+","+max;

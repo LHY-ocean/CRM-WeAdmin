@@ -125,14 +125,39 @@
 				"url": "./pages/operator/index.jsp"
 			},{
 				"id": 23,
+				"name": "客户来源",
+				"icon": "",
+				"url": "./pages/src/index.jsp"
+			},{
+				"id": 24,
+				"name": "回访",
+				"icon": "",
+				"url": "./pages/revisit/index.jsp"
+			},{
+				"id": 25,
+				"name": "预约",
+				"icon": "",
+				"url": "./pages/reserved/index.jsp"
+			},{
+				"id": 26,
+				"name": "合同",
+				"icon": "",
+				"url": "./pages/order/index.jsp"
+			},{
+				"id": 27,
 				"name": "客户",
 				"icon": "",
 				"url": "./pages/client/index.jsp"
 			},{
-				"id": 24,
-				"name": "客户来源",
+				"id": 28,
+				"name": "客户池未分配",
 				"icon": "",
-				"url": "./pages/src/index.jsp"
+				"url": "./pages/clientpool/index.jsp"
+			},{
+				"id": 29,
+				"name": "客户池新分配",
+				"icon": "",
+				"url": "./pages/newclientpool/index.jsp"
 			}]
 		}
 	]
