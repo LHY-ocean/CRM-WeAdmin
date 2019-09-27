@@ -28,8 +28,7 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-<a class="layui-btn layui-btn-xs" lay-event="revisit">添加回访</a>
-<a class="layui-btn layui-btn-xs" lay-event="lookrevisit">查看回访</a>
+<a class="layui-btn layui-btn-xs" lay-event="revisit">查看回访</a>
 <a class="layui-btn layui-btn-xs" lay-event="pea">转出</a>
 
 </script>
@@ -177,7 +176,7 @@
 			table.on('tool(test)', function(obj) {
 				var data = obj.data;
 				if (obj.event === 'revisit') { ///lay-event 属性
-					WeAdminShow('分配用户','pages/revisit/edit.jsp?clientid='+data.id,600,400);
+					WeAdminShow('查看回访','pages/revisit/index.jsp?clientid='+data.id,600,400);
 				} else if(obj.event == 'pea'){
 					var data = obj.data;
 					$.post("client/new_pea.action",{id:data.id},function(json){

@@ -24,6 +24,16 @@
 </style>
 </head>
 <body>
+<div class="weadmin-nav">
+			<span class="layui-breadcrumb">
+        <a href="">首页</a>
+        <a href="">管理员管理</a>
+        <a>
+          <cite>管理员列表</cite></a>
+      </span>
+			<a class="layui-btn layui-btn-sm" style="line-height:1.6em;margin-top:3px;float:right" href="javascript:location.replace(location.href);" title="刷新">
+				<i class="layui-icon" style="line-height:30px">ဂ</i></a>
+		</div>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
 <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
@@ -47,7 +57,7 @@
 			//第一个实例
 			table.render({
 				elem : '#demo',
-				height : 462,
+				height : 575,
 				url : 'workgroup/index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',

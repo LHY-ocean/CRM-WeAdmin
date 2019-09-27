@@ -27,8 +27,8 @@
 <body>
 	<table id="demo" lay-filter="test"></table>
 	<script type="text/html" id="barDemo">
-<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+<a class="layui-btn layui-btn-xs" lay-event="edit">查看历史</a>
+<a class="layui-btn layui-btn-xs" lay-event="edit">预约</a>
 </script>
 	<script type="text/html" id="toolbarDemo">
   <div class="layui-btn-container">
@@ -36,12 +36,12 @@
       <input type="text" name="txt" lay-verify="title"  autocomplete="off" placeholder="请输入名称" class="layui-input input">
     </div>
     <button class="layui-btn layui-btn-sm" lay-event="search">查询</button>
-    <button class="layui-btn layui-btn-sm" lay-event="add">新增</button>
+    <button class="layui-btn layui-btn-sm" lay-event="add">添加回访</button>
   </div>
 </script>
 
 	<script>
-	
+	var id = "${clientid}";
 		layui.use('table', function() {
 			var table = layui.table;
 
@@ -52,6 +52,9 @@
 				url : 'revisit/index.action' //数据接口
 				,
 				toolbar : '#toolbarDemo',
+				where:{
+					clientid:id
+				},
 				page : true //开启分页
 				,
 				cols : [ [ 

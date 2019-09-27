@@ -22,12 +22,20 @@ public class RevisitController {
 	ClientService clientservice;
 	
 	@RequestMapping("index")
-	public @ResponseBody ReturnInfo index(String txt,Integer page, Integer limit) {
+	public @ResponseBody ReturnInfo index(String txt,Integer page, Integer limit,Integer id) {
 		String where="";
-		if(txt!=null && txt!="")
-			where = " where name like '%"+txt+"%'";
+		if(id!=null) {
+			where=" where C_revisit.clientid = "+id+"";
+			if(txt!=null && txt!="")
+				where = where + " where name like '%"+txt+"%'";
+		} else {
+			where="";
+			if(txt!=null && txt!="")
+				where = " where name like '%"+txt+"%'";
+		}
 		return service.getWhere(where, page, limit);
 	}
+	
 	
 	@RequestMapping("select")
 	public @ResponseBody Revisit getById(int id) {
